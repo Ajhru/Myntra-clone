@@ -13,71 +13,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 
-// const categories = [
-//   {
-//     id: 1,
-//     name: "Men",
-//     image:
-//       "https://images.unsplash.com/photo-1617137968427-85924c800a22?w=500&auto=format&fit=crop",
-//   },
-//   {
-//     id: 2,
-//     name: "Women",
-//     image:
-//       "https://images.unsplash.com/photo-1618244972963-dbad0c4abf18?w=500&auto=format&fit=crop",
-//   },
-//   {
-//     id: 3,
-//     name: "Kids",
-//     image:
-//       "https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=500&auto=format&fit=crop",
-//   },
-//   {
-//     id: 4,
-//     name: "Beauty",
-//     image:
-//       "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format&fit=crop",
-//   },
-// ];
-
-// const products = [
-//   {
-//     id: 1,
-//     name: "Casual White T-Shirt",
-//     brand: "Roadster",
-//     price: "₹499",
-//     discount: "60% OFF",
-//     image:
-//       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&auto=format&fit=crop",
-//   },
-//   {
-//     id: 2,
-//     name: "Denim Jacket",
-//     brand: "Levis",
-//     price: "₹2499",
-//     discount: "40% OFF",
-//     image:
-//       "https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?w=500&auto=format&fit=crop",
-//   },
-//   {
-//     id: 3,
-//     name: "Summer Dress",
-//     brand: "ONLY",
-//     price: "₹1299",
-//     discount: "50% OFF",
-//     image:
-//       "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500&auto=format&fit=crop",
-//   },
-//   {
-//     id: 4,
-//     name: "Classic Sneakers",
-//     brand: "Nike",
-//     price: "₹3499",
-//     discount: "30% OFF",
-//     image:
-//       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop",
-//   },
-// ];
+ 
 
 const deals = [
   {
