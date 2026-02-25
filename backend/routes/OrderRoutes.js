@@ -4,6 +4,20 @@ const Order = require("../models/Order");
 const router = express.Router();
 const mongoose = require("mongoose");
 
+const sendNotification = require('../utils/sendNotification');
+
+
+
+const Transaction = require('../models/Transaction');
+
+// await Transaction.create({
+//   userId: user._id,
+//   paymentMode: order.paymentMode,
+//   amount: order.totalAmount,
+//   status: 'SUCCESS',
+// });
+
+
 function genrateRandomTracking() {
   const carriers = ["Delhivery", "Bluedart", "Ecom Express", "XpressBees"];
   const statusOptions = [
@@ -55,7 +69,7 @@ router.post("/create/:userId", async (req, res) => {
       quantity: item.quantity,
     }));
     const total = orderitem.reduce(
-      (sum, item) => sum + item.price + item.quantity,
+      (sum, item) => sum + item.price * item.quantity,
       0
     );
     const newOrder = new Order({
@@ -65,10 +79,22 @@ router.post("/create/:userId", async (req, res) => {
       item: orderitem,
       total: total,
       shippingAddress: req.body.shippingAddress,
-      paymentMethod:req.body.paymentMethod,
+      paymentMethod: req.body.paymentMethod,
       tracking: genrateRandomTracking(),
     });
     await newOrder.save();
+    await Transaction.create({
+      userId: user._id,
+      paymentMode: order.paymentMode,
+      amount: order.totalAmount,
+      status: 'SUCCESS',
+    });
+    sendNotification(
+      user.expoPushToken,
+      'Order Update',
+      'Your order has been shipped 🚚',
+      { screen: '/orders' }
+    );
     await Bag.deleteMany({ userId: userid });
     res.status(200).json({ message: "Order placed successfully" });
   } catch (error) {

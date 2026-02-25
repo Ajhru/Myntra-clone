@@ -38,4 +38,17 @@ router.post("/login", async (req, res) => {
     return res.status(500).json({ message: "Something went wrong" });
   }
 });
+
+
+
+router.post('/save-token', async (req, res) => {
+  const { userId, expoPushToken } = req.body;
+
+  try {
+    await User.findByIdAndUpdate(userId, { expoPushToken });
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 module.exports=router;

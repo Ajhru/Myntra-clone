@@ -1,7 +1,7 @@
 # node modules
 node_modules/
 backend/node_modules/
-myntra/node_modules/
+Myntra-2/node_modules/
 
 # env files
 .env

@@ -4,13 +4,17 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    // const categories = await Category.find().populate("productId");
-    const categories = await Category.find();
+    const categories = await Category.find().populate("productId");
+    // const categories = await Category.find();
     res.status(200).json(categories);
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: "Something went wrong" });
-  }
+  }catch (error) {
+  console.log("CATEGORY ERROR:", error);
+  return res.status(500).json({ message: error.message });
+}
 });
 
 module.exports = router;
+//  catch (error) {
+//     console.log(error);
+//     return res.status(500).json({ message: "Something went wrong" });
+//   }
